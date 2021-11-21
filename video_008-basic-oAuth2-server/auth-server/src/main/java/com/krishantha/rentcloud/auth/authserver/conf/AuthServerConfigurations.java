@@ -30,16 +30,13 @@ public class AuthServerConfigurations extends WebSecurityConfigurerAdapter
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-
         security.checkTokenAccess("permitAll()");
-
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer client) throws Exception {
 
         client.inMemory().withClient("web").secret(passwordEncoder.encode("webpass")).scopes("READ", "WRITE").authorizedGrantTypes("password", "authorization_code");
-
 
     }
 

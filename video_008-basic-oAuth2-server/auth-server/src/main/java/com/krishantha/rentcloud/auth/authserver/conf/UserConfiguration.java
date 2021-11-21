@@ -9,13 +9,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class UserConfiguration extends GlobalAuthenticationConfigurerAdapter {
 
-    PasswordEncoder passwordEncoder=PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
 
     @Override
     public void init(AuthenticationManagerBuilder auth) throws Exception {
 
-        auth.inMemoryAuthentication().withUser("krish").password(passwordEncoder.encode("krishpass")).roles("USER","ADMIN","MANAGER").authorities("CAN_READ","CAN_WRITE","CAN_DELETE").and()
-                .withUser("suranga").password(passwordEncoder.encode("surpass")).roles("USER").authorities("CAN_READ","CAN_WRITE");
+        auth.inMemoryAuthentication()
+                .withUser("krish").password(passwordEncoder.encode("krishpass")).roles("USER", "ADMIN", "MANAGER").authorities("CAN_READ", "CAN_WRITE", "CAN_DELETE").and()
+                .withUser("suranga").password(passwordEncoder.encode("surpass")).roles("USER").authorities("CAN_READ", "CAN_WRITE");
     }
 }
